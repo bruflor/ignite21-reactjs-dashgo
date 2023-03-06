@@ -10,7 +10,7 @@ export function Sidebar() {
                     <Text fontWeight="bold" color='gray.400' fontSize="small">
                         GERAL
                     </Text>
-                    <Stack display="flex" align="stretch">
+                    <Stack spacing="4" mt="8"  display="flex" align="stretch">
                         <Link display="flex" alignContent="center">
                             <Icon as={RiDashboardLine} fontSize="20" />
                             <Text ml="4" fontWeight="medium">Dashboard</Text>
@@ -26,10 +26,10 @@ export function Sidebar() {
                     <Text fontWeight="bold" color='gray.400' fontSize="small">
                         AUTOMAÇÃO
                     </Text>
-                    <Stack display="flex" align="stretch">
+                    <Stack spacing="4" mt="8" display="flex" align="stretch">
                         <Link display="flex" alignContent="center">
                             <Icon as={RiInputMethodLine} fontSize="20" />
-                            <Text ml="4" fontWeight="medium">formulários</Text>
+                            <Text ml="4" fontWeight="medium">Formulários</Text>
                         </Link>
                         <Link display="flex" alignContent="center">
                             <Icon as={RiGitMergeLine} fontSize="20" />
