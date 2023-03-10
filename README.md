@@ -1,3 +1,5 @@
+**Project in development
+
 # Dashgo.
 This is a project made on Ignite bootcamp by Rocketseat. It's a Dashboard with autentication, custom animated dashboard and much more. 
 
@@ -13,7 +15,7 @@ yarn dev
 pnpm dev
 ```
 
-## Tech
+## Technology
 - NextJS
 - TypeScript
 - Chakra UI
