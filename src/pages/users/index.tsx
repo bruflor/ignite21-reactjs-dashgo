@@ -1,11 +1,16 @@
 import { Header } from "@/components/Header";
 import Pagination from "@/components/Pagination";
 import { Sidebar } from "@/components/Sidebar";
-import { Box, Button, Flex, Heading, Icon, Table, Thead, Tr, Th, Checkbox, Tbody, Td, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Icon, Table, Thead, Tr, Th, Checkbox, Tbody, Td, Text, useBreakpointValue } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 
 
 export default function User() {
+const isWideVersion = useBreakpointValue({
+    base: false,
+    lg:true
+})
+
     return (
         <Box>
             <Header />
@@ -23,22 +28,22 @@ export default function User() {
                     <Table colorScheme="whiteAlpha">
                         <Thead>
                             <Tr>
-                                <Th px="6" color="gray.300" width="8">
+                                <Th px={["4","4","6"]} color="gray.300" width="8">
                                     <Checkbox colorScheme="pink" />
                                 </Th>
                                 <Th>
                                     Usuários
                                 </Th>
-                                <Th>
+                                {isWideVersion && <Th>
                                     Data de cadastro
-                                </Th>
+                                </Th>}
                                 <Th width="8">
                                 </Th>
                             </Tr>
                         </Thead>
                         <Tbody>
                             <Tr>
-                                <Td px="6">
+                                <Td px={["4","4","6"]}>
                                     <Checkbox colorScheme="pink" />
                                 </Td>
                                 <Td>
@@ -47,7 +52,7 @@ export default function User() {
                                         <Text fontSize="sm" color="gray.300">diego.lorinho@gmail.com</Text>
                                     </Box>
                                 </Td>
-                                <Td>31 de Fevereiro de 2023</Td>
+                                {isWideVersion && <Td>31 de Fevereiro de 2023</Td>}
                                 <Td>
                                     <Button as="a" size="sm" fontSize="sm" colorScheme="purple" leftIcon={<Icon fontSize="16" as={RiPencilLine} />}>
                                         Editar
