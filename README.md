@@ -20,3 +20,6 @@ pnpm dev
 - TypeScript
 - Chakra UI
 - ApexCharts
+- React Hook Form
+- Yup
+- MirageJs
