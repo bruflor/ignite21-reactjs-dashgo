@@ -5,12 +5,12 @@ import { FieldError } from "react-hook-form/dist/types";
 interface InputProps extends ChakraInputProps{
     name: string;
     label?: string;
-    error?: FieldError;
+    error: FieldError;
 } 
 
 const InputBase:ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({name, label, error = null, ...rest}, ref)=>{
     return (
-        <FormControl  isInvalid={!!error}>
+        <FormControl isInvalid={!!error}>
             {!!label && <FormLabel htmlFor={name}>{label}</FormLabel>}
             <ChakraInput ref={ref} name={name} id={name} {...rest} focusBorderColor="pink.500" bgColor="gray.900" _hover={{ bgColor: 'gray.900' }} size="lg" />
 
