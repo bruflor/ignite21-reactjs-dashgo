@@ -3,6 +3,7 @@ import Pagination from "@/components/Pagination";
 import { Sidebar } from "@/components/Sidebar";
 import { Box, Button, Flex, Heading, Icon, Table, Thead, Tr, Th, Checkbox, Tbody, Td, Text, useBreakpointValue } from "@chakra-ui/react";
 import Link from "next/link";
+import { useEffect } from "react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 
 
@@ -12,6 +13,10 @@ const isWideVersion = useBreakpointValue({
     lg:true
 })
 
+
+useEffect(()=>{
+    fetch('http://localhost:3000/api/users').then(response => response.json()).then(data => console.log(data))
+})
     return (
         <Box>
             <Header />
