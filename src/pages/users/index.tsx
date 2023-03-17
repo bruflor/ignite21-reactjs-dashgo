@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import Pagination from "@/components/Pagination";
 import { Sidebar } from "@/components/Sidebar";
+import { api } from "@/services/api";
 import { Box, Button, Flex, Heading, Icon, Table, Thead, Tr, Th, Checkbox, Tbody, Td, Text, useBreakpointValue, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -18,8 +19,7 @@ interface UserDataProps {
 export default function User() {
 
     const { data, isLoading, error } = useQuery('users', async () => {
-        const response = await fetch('http://localhost:3000/api/users')
-        const data = await response.json()
+        const {data} = await api.get('users')
 
         const users = data.users.map((user:UserDataProps ) => {
             return {
