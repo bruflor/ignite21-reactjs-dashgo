@@ -1,12 +1,11 @@
 import { Header } from "@/components/Header";
 import Pagination from "@/components/Pagination";
 import { Sidebar } from "@/components/Sidebar";
-import { api } from "@/services/api";
+import { UseUsers } from "@/services/hooks/useUsers";
 import { Box, Button, Flex, Heading, Icon, Table, Thead, Tr, Th, Checkbox, Tbody, Td, Text, useBreakpointValue, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
 import { useEffect } from "react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
-import { useQuery } from 'react-query'
 
 
 interface UserDataProps { 
@@ -18,24 +17,7 @@ interface UserDataProps {
 
 export default function User() {
 
-    const { data, isLoading, error } = useQuery('users', async () => {
-        const {data} = await api.get('users')
-
-        const users = data.users.map((user:UserDataProps ) => {
-            return {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                createdAt: new Date(user.createdAt).toLocaleDateString('pt-BR', {
-                    day: '2-digit',
-                    month: 'long',
-                    year: 'numeric'
-                })
-            }
-        })
-
-        return users
-    })
+    const { data, isLoading, error } = UseUsers()
 
     const isWideVersion = useBreakpointValue({
         base: false,
@@ -89,7 +71,7 @@ export default function User() {
                                     </Tr>
                                 </Thead>
                                 <Tbody>
-                                    {data.map((user) => {
+                                    {data?.map((user) => {
                                         return (
                                             <Tr key={user.id}>
                                                 <Td px={["4", "4", "6"]}>
