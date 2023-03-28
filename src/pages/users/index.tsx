@@ -94,7 +94,7 @@ export default function User() {
                                     })}
                                 </Tbody>
                             </Table>
-                            <Pagination />
+                            <Pagination totalCountOfRegister={200} registersPerPage={5} currentPage={5} onPageChange={()=>{}}/>
                         </>
                     )
                     }
