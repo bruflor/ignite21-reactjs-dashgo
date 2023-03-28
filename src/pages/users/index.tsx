@@ -4,7 +4,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { UseUsers } from "@/services/hooks/useUsers";
 import { Box, Button, Flex, Heading, Icon, Table, Thead, Tr, Th, Checkbox, Tbody, Td, Text, useBreakpointValue, Spinner } from "@chakra-ui/react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 
 
@@ -17,7 +17,9 @@ interface UserDataProps {
 
 export default function User() {
 
-    const { data, isLoading, error } = UseUsers()
+
+    const [page, setPage] = useState(1)
+    const { data, isLoading, error } = UseUsers(page)
 
     const isWideVersion = useBreakpointValue({
         base: false,
@@ -71,7 +73,7 @@ export default function User() {
                                     </Tr>
                                 </Thead>
                                 <Tbody>
-                                    {data?.map((user) => {
+                                    {data?.users.map((user) => {
                                         return (
                                             <Tr key={user.id}>
                                                 <Td px={["4", "4", "6"]}>
@@ -94,7 +96,7 @@ export default function User() {
                                     })}
                                 </Tbody>
                             </Table>
-                            <Pagination totalCountOfRegister={200} registersPerPage={5} currentPage={5} onPageChange={()=>{}}/>
+                            <Pagination totalCountOfRegister={data?.totalCount} registersPerPage={5} currentPage={5} onPageChange={setPage}/>
                         </>
                     )
                     }
